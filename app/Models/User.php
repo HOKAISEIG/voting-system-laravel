@@ -37,4 +37,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function votedPolls(){
+        return $this->belongsToMany(Poll::class,'poll_users','user_id', 'poll_id')->withPivot('option_id');
+    }
 }

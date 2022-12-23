@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOptionUsersTable extends Migration
+class CreatePollUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateOptionUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('option_users', function (Blueprint $table) {
+        Schema::create('poll_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
+            ->constrained()
+            ->onDelete('cascade');
+            $table->foreignId('poll_id')
             ->constrained()
             ->onDelete('cascade');
             $table->foreignId('option_id')
@@ -32,6 +35,6 @@ class CreateOptionUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('option_users');
+        Schema::dropIfExists('poll_users');
     }
 }

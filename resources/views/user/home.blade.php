@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session()->has('sucess'))
+    <div class="alert alert-success">
+        {{ session()->get('sucess') }}
+    </div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +19,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Welcome give ur opinion.') }}
+                    <a href="{{  route("user.show_index")}}">See polls</a>
                 </div>
             </div>
         </div>
