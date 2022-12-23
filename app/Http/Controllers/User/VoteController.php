@@ -23,7 +23,7 @@ class VoteController extends Controller
             $user->votedPolls()->detach($poll_id);
             $user->votedPolls()->attach($poll_id,['option_id'=>$option_id]);
         }
-        return view('user.home')->with('sucess','voted sucessfully');
+        return view('user.home');
        
     }
 

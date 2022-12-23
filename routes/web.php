@@ -32,7 +32,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth', 'as'=>'admin.' , 'middlewa
     Route::get('/add-poll',[App\Http\Controllers\Admin\PollController::class,'create'])->name('add_poll');
     Route::get('/user-index',[App\Http\Controllers\Admin\PollController::class, 'show'])->name('show_index');
     Route::get('/view-stats/{poll}',[App\Http\Controllers\Admin\PollController::class, 'viewStats'])->name('show_stats');
-    Rooute::get('')
+   
 
 });
 Route::group(['prefix'=>'user','middleware'=>'auth','as'=>'user.'],function(){

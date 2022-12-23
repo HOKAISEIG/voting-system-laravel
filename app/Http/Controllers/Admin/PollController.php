@@ -34,7 +34,7 @@ class PollController extends Controller
     }
     public function show()
     {
-        $polls=Poll::latest()->get();
+        $polls=Poll::whereDate('poll_end_date', '>=', Carbon::today()->toDateString())->latest()->get();
         return view('admin.index')->with('polls',$polls);
     }
     public function viewStats(Poll $poll)
@@ -57,7 +57,7 @@ class PollController extends Controller
             $label[] = $option->option_body;
             $var[] = $count;
         }
-        dd(Carbon::now());
+       
        
         return view('admin.chart')->with('var',$var)->with('label',$label)->with('totalVotes',$votedUsers->count());
     }
